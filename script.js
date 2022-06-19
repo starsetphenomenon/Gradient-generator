@@ -12,11 +12,14 @@ let arrows = document.getElementsByClassName('arrow_wrapper');
 let activeArrow = 'bottom right';
 let hex = document.getElementById('hex');
 let rgb = document.getElementById('rgb');
-
+let zero = document.querySelector('.zero');
 
 const onInputColor = function () {
     if (linear.classList.contains('active')) {
         gradient.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+        if (hex.classList.contains('active')) {
+            gradient.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+        }
     } else if (radial.classList.contains('active')) {
         gradient.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     }
@@ -63,7 +66,7 @@ const onRandom = function () {
     secondColor.value = `${randomSecondColor}`;
 };
 
-const HexToRgb = function (c) {
+/* const HexToRgb = function (c) {
     let a = c.split('');
     let r = parseInt(a[1] + a[2], 16);
     let g = parseInt(a[3] + a[4], 16);
@@ -72,70 +75,53 @@ const HexToRgb = function (c) {
     return result;
 };
 
+const RgbToHex = function (c) {
+    let a = c.split(/[,()]/);
+    let r = +a[1]
+    let g = +a[2];
+    let b = +a[3];
+    result = `#${r}${g}${b}`;
+    return result;
+}; */
+
 const onCopy = function () {
     if (linear.classList.contains('active')) {
         navigator.clipboard.writeText(`
-        background: ${
-            firstColor.value
-        };
-        background: ${
-            gradient.style.background
-        };
-        background: -webkit - ${
-            gradient.style.background
-        };
-        background: -moz - ${
-            gradient.style.background
-        };
+        background: ${firstColor.value};
+        background: ${gradient.style.background};
+        background: -webkit - ${gradient.style.background};
+        background: -moz - ${gradient.style.background};
         `);
     } else {
         navigator.clipboard.writeText(`
-        background: ${
-            firstColor.value
-        };
-        background: ${
-            gradient.style.background
-        };
-        background: -webkit - ${
-            gradient.style.background
-        };
-        background: -moz - ${
-            gradient.style.background
-        };
+        background: ${firstColor.value};
+        background: ${gradient.style.background};
+        background: -webkit - ${gradient.style.background};
+        background: -moz - ${gradient.style.background};
         `);
     }
     getCode.innerText = 'COPIED';
     setTimeout(() => {
         getCode.innerText = 'Get CSS';
-    }, 1500);
+    }, 800);
 };
 
 
 const onLinear = function () {
-    gradient.style.background = `
-        linear - gradient(to $ {
-            activeArrow
-        }, $ {
-            firstColor.value
-        }, $ {
-            secondColor.value
-        })
-        `;
+    gradient.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     linear.classList.add('active');
     radial.classList.remove('active');
+    zero.style = `box-shadow: none;
+    border-radius: none;
+    cursor: default;`;
 };
 
 const onRadial = function () {
-    gradient.style.background = `
-        radial - gradient(at $ {
-            activeArrow
-        }, $ {
-            firstColor.value
-        }, $ {
-            secondColor.value
-        })
-        `;
+    gradient.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     radial.classList.add('active');
+    zero.style = `box-shadow: 0px 0px 4px black;
+    border-radius: 8px;
+    cursor: pointer;`;
     linear.classList.remove('active');
 };
 
@@ -149,8 +135,8 @@ const onRgb = function () {
     hex.classList.remove('active');
 };
 
-hex.addEventListener('click', onHex);
-rgb.addEventListener('click', onRgb);
+/* hex.addEventListener('click', onHex);
+rgb.addEventListener('click', onRgb); */
 linear.addEventListener('click', onLinear);
 radial.addEventListener('click', onRadial);
 getCode.addEventListener('click', onCopy);

@@ -13,9 +13,11 @@ body {
 .panel>* {
     margin-top: 15%;
     margin-left: 10%;
+    margin-right: 10%;
 }
 
 .panel {
+    position: relative;
     min-height: 100vh;
     min-width: 100%;
     background-color: rgba(132, 132, 133, 0);
@@ -35,16 +37,19 @@ body {
     background: -webkit-linear-gradient(rgb(226, 43, 43), rgb(136, 224, 13));
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
+    margin-bottom: 30px;
 }
 
 .type__buttons {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .type__buttons button {
-    margin-right: 30px;
+    margin-bottom: 15px;
 }
 
 .active {
@@ -70,12 +75,11 @@ body {
     display: grid;
     row-gap: 10px;
     column-gap: 15px;
-    margin-right: 10%;
-    grid-template-columns: repeat(3, 60px);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     align-items: center;
     justify-content: start;
-    width: 70%;
+    margin-bottom: 30px;
 }
 
 
@@ -136,6 +140,7 @@ body {
     cursor: default;
 }
 
+
 .zero:hover {
     background-color: rgba(255, 224, 174, 0);
 }
@@ -150,6 +155,7 @@ body {
 .colors>* {
     cursor: pointer;
     margin-right: 15px;
+    margin-bottom: 15px;
 }
 
 .colors input {
@@ -181,7 +187,7 @@ body {
 .getCode {
     width: 80%;
     height: 60px;
-    margin-bottom: 15px 15%;
+    margin-bottom: 15%;
 }
 
 #getCode {
@@ -204,4 +210,51 @@ body {
     justify-content: start;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.version {
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    position: fixed;
+    margin: 0 !important;
+    bottom: 10px;
+    right: 15px;
+}
+
+@media (max-width: 1200px) {
+    .heading {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 992px) {
+    .heading {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .panel>* {
+        margin: 5% 15%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .gradient {
+        min-height: 30vh;
+    }
+
+    .heading {
+        font-size: 24px;
+    }
+
+    .getCode {
+        width: auto;
+    }
 }
