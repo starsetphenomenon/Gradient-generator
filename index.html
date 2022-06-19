@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>CSS Gradient generator</title>
+</head>
+
+<body>
+    <section class="main">
+        <div class="panel">
+            <div id="heading" class="heading">
+                Css <br>
+                gradient<br>
+                generator
+            </div>
+            <div class="type">
+                <h2>Style</h2>
+                <div class="type__buttons">
+                    <div class="linear">
+                        <button id="linear" class="Btn active">Linear</button>
+                    </div>
+                    <div class="radial">
+                        <button id="radial" class="Btn">Radial</button>
+                    </div>
+                </div>
+            </div>
+            <div class="directions__wrapper">
+                <h2>Direction</h2>
+                <div id="directions" class="directions">
+                    <div id="topleft" name="top left" class="arrow_wrapper topleft">
+                        <img class="arrow" src="arrow.svg" alt="">
+                    </div>
+                    <div id="top" name="top" class="arrow_wrapper top">
+                        <img class="arrow" src="arrow.svg" alt="">
+                    </div>
+                    <div id="topright" name="top right" class="arrow_wrapper topright">
+                        <img class="arrow" src="arrow.svg" alt="">
+                    </div>
+                    <div id="left" name="left" class="arrow_wrapper left">
+                        <img class="arrow" src="arrow.svg" alt="">
+                    </div>
+                    <div name="top" class="arrow_wrapper zero">
+                        <img class="arrow" src="zero.svg" alt="">
+                    </div>
+                    <div id="right" name="right" class="arrow_wrapper right">
+                        <img class="arrow" src="arrow.svg" alt="">
+                    </div>
+                    <div id="bottomleft" name="bottom left" class="arrow_wrapper bottomleft">
+                        <img class="arrow" src="arrow.svg" alt="">
+                    </div>
+                    <div id="bottom" name="bottom" class="arrow_wrapper bottom">
+                        <img class="arrow" src="arrow.svg" alt="">
+                    </div>
+                    <div id="bottomright" name="bottom right" class="arrow_wrapper bottomright active-direction">
+                        <img class="arrow" src="arrow.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="colors__wrapper">
+                <h2>Colors</h2>
+                <div class="colors">
+                    <input type="color" id="firstColor" value="#657bec"><br><br>
+                    <input type="color" id="secondColor" value="#ff7300"><br><br>
+                    <button id="randomColor" class="Btn randomColor">Random</button>
+                </div>
+            </div>
+            <div class="output__wrapper">
+                <h2>Output format</h2>
+                <div class="output">
+                    <button id="rgb" class="Btn active">Rgb</button>
+                    <button id="hex" class="Btn">Hex</button>                    
+                </div>
+            </div>
+            <div class="getCode">
+                <button id="getCode" class="Btn">Get CSS</button>
+            </div>
+        </div>
+        <div id="gradient" class="gradient"></div>
+    </section>
+</body>
+
+</html>
