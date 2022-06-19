@@ -23,6 +23,9 @@ const onInputColor = function () {
     } else if (radial.classList.contains('active')) {
         gradient.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     }
+    if (window.screen.width < 768) {
+        getCode.style.boxShadow = `-4px -4px 12px ${firstColor.value}, 4px 4px 12px ${secondColor.value}`;
+    }
     heading.style.background = `-webkit-linear-gradient(${firstColor.value}, ${secondColor.value})`;
 };
 
@@ -37,6 +40,9 @@ const onDirection = function (e) {
             gradient.style.background = `linear-gradient(to ${e.target.getAttribute('name')}, ${firstColor.value}, ${secondColor.value})`;
         } else if (radial.classList.contains('active')) {
             gradient.style.background = `radial-gradient(at ${e.target.getAttribute('name')}, ${firstColor.value}, ${secondColor.value})`;
+        }
+        if (window.screen.width < 768) {
+            getCode.style.boxShadow = `-4px -4px 12px ${firstColor.value}, 4px 4px 12px ${secondColor.value}`;
         }
         heading.style.background = `-webkit-linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     }
@@ -61,9 +67,12 @@ const onRandom = function () {
         gradient.style.background = `radial-gradient(at ${randomDirection}, ${randomFirstColor}, ${randomSecondColor})`;
 
     }
-    heading.style.background = `linear-gradient(to ${randomDirection}, ${randomFirstColor}, ${randomSecondColor})`;
     firstColor.value = `${randomFirstColor}`;
     secondColor.value = `${randomSecondColor}`;
+    heading.style.background = `linear-gradient(to ${randomDirection}, ${randomFirstColor}, ${randomSecondColor})`;
+    if (window.screen.width < 768) {
+        getCode.style.boxShadow = `-4px -4px 12px ${firstColor.value}, 4px 4px 12px ${secondColor.value}`;
+    }
 };
 
 /* const HexToRgb = function (c) {
