@@ -4,22 +4,24 @@ let gradient = document.getElementById('gradient');
 let directions = document.getElementById('directions');
 let randomColor = document.getElementById('randomColor');
 let getCode = document.getElementById('getCode');
-gradient.style.background = `linear-gradient(to top left,#657bec, #ff7300)`;
+gradient.style.background = `linear-gradient(to bottom right, #38A2D7, #561139)`;
 let linear = document.getElementById('linear');
 let radial = document.getElementById('radial');
 let heading = document.getElementById('heading');
 let arrows = document.getElementsByClassName('arrow_wrapper');
 let activeArrow = 'bottom right';
-let hex = document.getElementById('hex');
-let rgb = document.getElementById('rgb');
+let hidePresets = document.getElementById('hidePresets');
+let presetsPanel = document.getElementById('presets__wrapper');
+/* let hex = document.getElementById('hex');
+let rgb = document.getElementById('rgb'); */
 let zero = document.querySelector('.zero');
 
 const onInputColor = function () {
     if (linear.classList.contains('active')) {
         gradient.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
-        if (hex.classList.contains('active')) {
+        /* if (hex.classList.contains('active')) {
             gradient.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
-        }
+        } */
     } else if (radial.classList.contains('active')) {
         gradient.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     }
@@ -98,15 +100,15 @@ const onCopy = function () {
         navigator.clipboard.writeText(`
         background: ${firstColor.value};
         background: ${gradient.style.background};
-        background: -webkit - ${gradient.style.background};
-        background: -moz - ${gradient.style.background};
+        background: -webkit- ${gradient.style.background};
+        background: -moz- ${gradient.style.background};
         `);
     } else {
         navigator.clipboard.writeText(`
         background: ${firstColor.value};
         background: ${gradient.style.background};
-        background: -webkit - ${gradient.style.background};
-        background: -moz - ${gradient.style.background};
+        background: -webkit- ${gradient.style.background};
+        background: -moz- ${gradient.style.background};
         `);
     }
     getCode.innerText = 'COPIED';
@@ -144,6 +146,24 @@ const onRgb = function () {
     hex.classList.remove('active');
 };
 
+const onPresetChange = function (e) {
+    if (e.target.classList.contains('preset')) {
+        gradient.style.background = window.getComputedStyle(e.target).backgroundImage;
+        firstColor.value = e.target.getAttribute('color1');
+        secondColor.value = e.target.getAttribute('color2');
+    }
+};
+
+const onHide = function (e) {
+    if (presets.classList.contains('hide_presets')) {
+        presets.classList.remove('hide_presets');
+        e.target.innerText = 'HIDE PRESETS';
+    } else {
+        presets.classList.add('hide_presets');
+        e.target.innerText = 'SHOW PRESETS';
+    }
+}
+
 /* hex.addEventListener('click', onHex);
 rgb.addEventListener('click', onRgb); */
 linear.addEventListener('click', onLinear);
@@ -153,3 +173,5 @@ randomColor.addEventListener('click', onRandom);
 directions.addEventListener('click', onDirection);
 firstColor.addEventListener('input', onInputColor);
 secondColor.addEventListener('input', onInputColor);
+presets.addEventListener('click', onPresetChange);
+hidePresets.addEventListener('click', onHide);

@@ -24,11 +24,155 @@ body {
 }
 
 .gradient {
+    position: relative;
     min-height: 100vh;
     width: 100%;
     background: linear-gradient(to top left, #657bec, #ff7300);
 }
 
+.presets__heading:hover {
+    background-color: rgba(255, 166, 0, 0.7);
+}
+
+.preset:hover {
+    opacity: 0.8 !important;
+}
+
+#preset1 {
+    background-image: linear-gradient(to bottom right, #FF512F, #DD2476);
+}
+
+#preset2 {
+    background-image: linear-gradient(to bottom right, #FF61D2, #FE9090);
+}
+
+#preset3 {
+    background-image: linear-gradient(to bottom right, #72FFB6, #10D164);
+}
+
+#preset4 {
+    background-image: linear-gradient(to bottom right, #FD8451, #FFBD6F);
+}
+
+#preset5 {
+    background-image: linear-gradient(to bottom right, #305170, #6DFC6B);
+}
+
+#preset6 {
+    background-image: linear-gradient(to bottom right, #00C0FF, #4218B8);
+}
+
+#preset7 {
+    background-image: linear-gradient(to bottom right, #009245, #FCEE21);
+}
+
+#preset8 {
+    background-image: linear-gradient(to bottom right, #FDFCFB, #E2D1C3);
+}
+
+#preset9 {
+    background-image: linear-gradient(to bottom right, #0100EC, #FB36F4);
+}
+
+#preset10 {
+    background-image: linear-gradient(to bottom right, #FDABDD, #374A5A);
+}
+
+#preset11 {
+    background-image: linear-gradient(to bottom right, #38A2D7, #561139);
+}
+
+#preset12 {
+    background-image: linear-gradient(to bottom right, #121C84, #8278DA);
+}
+
+#preset13 {
+    background-image: linear-gradient(to bottom right, #5761B2, #1FC5A8);
+}
+
+#preset14 {
+    background-image: linear-gradient(to bottom right, #FFDB01, #0E197D);
+}
+
+#preset15 {
+    background-image: linear-gradient(to bottom right, #FF3E9D, #0E1F40);
+}
+
+.hide_presets {
+    animation: hidePresets ease-out 0.3s forwards;
+}
+
+@keyframes hidePresets {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.presets__heading {
+    letter-spacing: 2px;
+    user-select: none;
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 24px;
+    min-width: 60%;
+    padding: 10px 15px;
+    min-height: 15%;
+    background-color: rgba(255, 166, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+#presets__wrapper {
+    transition: all 1s;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    min-height: 25%;
+}
+
+.presets {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 15px;
+    flex-direction: row;
+}
+
+.presets>* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    opacity: 0.3;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 15%;
+    height: 25%;
+    background-color: rgba(255, 166, 0, 0.7);
+}
 
 .heading {
     font-size: 32px;
@@ -253,7 +397,20 @@ body {
     }
 
     .gradient {
-        min-height: 30vh;
+        min-height: 60vh;
+    }
+    #presets__wrapper{
+        bottom: 5%;
+    }
+    .presets{
+        bottom: 170%;
+    }
+    .presets >*{
+        height: 50%;
+    }
+    .presets__heading {
+        bottom: 0;
+        font-size: 16px;
     }
 
     .heading {
