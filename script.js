@@ -26,7 +26,7 @@ const onInputColor = function () {
         gradient.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     }
     if (window.screen.width < 768) {
-        getCode.style.boxShadow = `-4px -4px 12px ${firstColor.value}, 4px 4px 12px ${secondColor.value}`;
+        getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     }
     heading.style.background = `-webkit-linear-gradient(${firstColor.value}, ${secondColor.value})`;
 };
@@ -44,7 +44,7 @@ const onDirection = function (e) {
             gradient.style.background = `radial-gradient(at ${e.target.getAttribute('name')}, ${firstColor.value}, ${secondColor.value})`;
         }
         if (window.screen.width < 768) {
-            getCode.style.boxShadow = `-4px -4px 12px ${firstColor.value}, 4px 4px 12px ${secondColor.value}`;
+            getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
         }
         heading.style.background = `-webkit-linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     }
@@ -73,7 +73,7 @@ const onRandom = function () {
     secondColor.value = `${randomSecondColor}`;
     heading.style.background = `linear-gradient(to ${randomDirection}, ${randomFirstColor}, ${randomSecondColor})`;
     if (window.screen.width < 768) {
-        getCode.style.boxShadow = `-4px -4px 12px ${firstColor.value}, 4px 4px 12px ${secondColor.value}`;
+        getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     }
 };
 
@@ -100,15 +100,15 @@ const onCopy = function () {
         navigator.clipboard.writeText(`
         background: ${firstColor.value};
         background: ${gradient.style.background};
-        background: -webkit- ${gradient.style.background};
-        background: -moz- ${gradient.style.background};
+        background: -webkit-${gradient.style.background};
+        background: -moz-${gradient.style.background};
         `);
     } else {
         navigator.clipboard.writeText(`
         background: ${firstColor.value};
         background: ${gradient.style.background};
-        background: -webkit- ${gradient.style.background};
-        background: -moz- ${gradient.style.background};
+        background: -webkit-${gradient.style.background};
+        background: -moz-${gradient.style.background};
         `);
     }
     getCode.innerText = 'COPIED';
