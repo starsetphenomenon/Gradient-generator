@@ -151,6 +151,9 @@ const onPresetChange = function (e) {
         gradient.style.background = window.getComputedStyle(e.target).backgroundImage;
         firstColor.value = e.target.getAttribute('color1');
         secondColor.value = e.target.getAttribute('color2');
+        if (window.screen.width < 768) {
+            getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+        }
     }
 };
 
