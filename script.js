@@ -18,16 +18,19 @@ let zero = document.querySelector('.zero');
 
 const onInputColor = function () {
     if (linear.classList.contains('active')) {
+        if (window.screen.width <= 768) {
+            getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+        }
         gradient.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
         /* if (hex.classList.contains('active')) {
             gradient.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
         } */
     } else if (radial.classList.contains('active')) {
+        if (window.screen.width <= 768) {
+            getCode.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+        }
         gradient.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
-    }
-    if (window.screen.width < 768) {
-        getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
-    }
+    }    
     heading.style.background = `-webkit-linear-gradient(${firstColor.value}, ${secondColor.value})`;
 };
 
@@ -39,13 +42,16 @@ const onDirection = function (e) {
         e.target.classList.add('active-direction');
         activeArrow = e.target.getAttribute('name');
         if (linear.classList.contains('active')) {
+            if (window.screen.width <= 768) {
+                getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+            }
             gradient.style.background = `linear-gradient(to ${e.target.getAttribute('name')}, ${firstColor.value}, ${secondColor.value})`;
         } else if (radial.classList.contains('active')) {
+            if (window.screen.width <= 768) {
+                getCode.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+            }
             gradient.style.background = `radial-gradient(at ${e.target.getAttribute('name')}, ${firstColor.value}, ${secondColor.value})`;
-        }
-        if (window.screen.width < 768) {
-            getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
-        }
+        }        
         heading.style.background = `-webkit-linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     }
 };
@@ -64,17 +70,20 @@ const onRandom = function () {
     let randomSecondColor = generateRandomColor();
     let randomDirection = directions.children[Math.floor(Math.random() * directions.childElementCount)].getAttribute('name');
     if (linear.classList.contains('active')) {
+        if (window.screen.width <= 768) {
+            getCode.style.background = `linear-gradient(to ${randomDirection}, ${randomFirstColor}, ${randomSecondColor})`;
+        }
         gradient.style.background = `linear-gradient(to ${randomDirection}, ${randomFirstColor}, ${randomSecondColor})`;
     } else {
+        if (window.screen.width <= 768) {
+            getCode.style.background = `radial-gradient(at ${randomDirection}, ${randomFirstColor}, ${randomSecondColor})`;
+        }
         gradient.style.background = `radial-gradient(at ${randomDirection}, ${randomFirstColor}, ${randomSecondColor})`;
 
     }
     firstColor.value = `${randomFirstColor}`;
     secondColor.value = `${randomSecondColor}`;
     heading.style.background = `linear-gradient(to ${randomDirection}, ${randomFirstColor}, ${randomSecondColor})`;
-    if (window.screen.width < 768) {
-        getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
-    }
 };
 
 /* const HexToRgb = function (c) {
@@ -120,6 +129,7 @@ const onCopy = function () {
 
 const onLinear = function () {
     gradient.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+    getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     linear.classList.add('active');
     radial.classList.remove('active');
     zero.style = `box-shadow: none;
@@ -129,6 +139,7 @@ const onLinear = function () {
 
 const onRadial = function () {
     gradient.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+    getCode.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
     radial.classList.add('active');
     zero.style = `box-shadow: 0px 0px 4px black;
     border-radius: 8px;
@@ -151,8 +162,14 @@ const onPresetChange = function (e) {
         gradient.style.background = window.getComputedStyle(e.target).backgroundImage;
         firstColor.value = e.target.getAttribute('color1');
         secondColor.value = e.target.getAttribute('color2');
-        if (window.screen.width < 768) {
-            getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+        if (linear.classList.contains('active')) {
+            if (window.screen.width <= 768) {
+                getCode.style.background = `linear-gradient(to ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+            }
+        } else {
+            if (window.screen.width <= 768) {
+                getCode.style.background = `radial-gradient(at ${activeArrow}, ${firstColor.value}, ${secondColor.value})`;
+            }    
         }
     }
 };
